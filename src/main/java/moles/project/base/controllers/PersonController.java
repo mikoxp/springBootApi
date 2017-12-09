@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-
+/**
+ * @author michal.oles
+ */
 @RestController
 @RequestMapping("person")
 public class PersonController {

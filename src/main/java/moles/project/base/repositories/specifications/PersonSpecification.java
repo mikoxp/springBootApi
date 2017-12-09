@@ -10,7 +10,15 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+/**
+ * @author michal.oles
+ */
 public class PersonSpecification  {
+    /**
+     * search by name
+     * @param name nama
+     * @return search spec
+     */
     public static Specification<Person> customerHasBirthday(String name) {
         return new Specification<Person>() {
             @Override
