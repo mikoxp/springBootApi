@@ -4,7 +4,7 @@ import moles.project.base.entities.Person;
 import moles.project.base.repositories.PersonRepository;
 import moles.project.base.repositories.specifications.PersonSpecification;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.domain.Specifications;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedList;
@@ -37,8 +37,13 @@ public class PersonService {
         return personRepository.findByNameLike(nameToQuery);
     }
 
+    /**
+     *
+     * @param name name
+     * @return search person
+     */
     public List<Person> searchByNameSpec(String name){
-
-        return personRepository.findAll(new PersonSpecification(name));
+        Specification<Person> personSpecification = PersonSpecification.customerHasBirthday(name);
+        return personRepository.findAll(personSpecification);
     }
 }
