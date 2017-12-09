@@ -27,3 +27,4 @@ db.*
 .mvn/
 mvnw.*
 mvnw
+logs/
