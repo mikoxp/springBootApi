@@ -4,6 +4,10 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * @author michal.oles
+ */
+
 @Entity
 @Table(name = "groups")
 public class Group implements Serializable {

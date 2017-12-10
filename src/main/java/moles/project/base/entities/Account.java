@@ -1,5 +1,6 @@
 package moles.project.base.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -23,13 +24,14 @@ public class Account implements Serializable,UserDetails{
     @Column(name = "login")
     private String login;
 
+    @JsonIgnore
     @Column(name = "password")
     private String password;
 
     @Column(name="enabled")
     private Boolean enabled=true;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id")
     private Group group;
 
