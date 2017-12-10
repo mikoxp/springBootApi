@@ -26,6 +26,13 @@ public class Account implements Serializable,UserDetails{
     @Column(name = "password")
     private String password;
 
+    @Column(name="enabled")
+    private Boolean enabled=true;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    private Group group;
+
     public Integer getId() {
         return id;
     }
@@ -40,6 +47,14 @@ public class Account implements Serializable,UserDetails{
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
     }
 
     @Override
@@ -73,11 +88,19 @@ public class Account implements Serializable,UserDetails{
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return enabled;
     }
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Boolean getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(Boolean enabled) {
+        this.enabled = enabled;
     }
 
     @Override
