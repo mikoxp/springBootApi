@@ -4,3 +4,6 @@
 #h2 database
 ##http://localhost:8066/h2/client/
 
+l:user p:user
+l:admin p:admin
+
