@@ -31,6 +31,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/info").permitAll()
+                .antMatchers("/info/user").hasAuthority("USER")
+                .antMatchers("/info/admin").hasAuthority("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -38,6 +40,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/")
                 .permitAll()
                 .and()
+                .exceptionHandling()
+                .accessDeniedPage("/info/denied").and()
                 .logout()
                 .permitAll();
 

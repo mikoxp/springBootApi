@@ -1,0 +1,1 @@
+INSERT INTO accounts (login,password,group_id,enabled) VALUES ('user','ee11cbb19052e40b07aac0ca060c23ee',1001,true);

@@ -7,6 +7,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author michal.oles
@@ -61,7 +63,9 @@ public class Account implements Serializable,UserDetails{
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
+        authorities.addAll(getGroup().getRoles());
+        return authorities;
     }
 
     public String getPassword() {
