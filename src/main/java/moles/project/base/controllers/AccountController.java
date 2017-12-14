@@ -1,6 +1,7 @@
 package moles.project.base.controllers;
 
 import moles.project.base.entities.Account;
+import moles.project.base.json.UserWithRoles;
 import moles.project.base.repositories.AccountRepository;
 import moles.project.base.services.AccountService;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.LinkedList;
 import java.util.List;
 
 @RestController
@@ -29,4 +31,16 @@ public class AccountController {
         logger.info("Get all account");
         return accountService.getAll();
     }
+
+    /**
+     *
+     * @return current user roles
+     */
+    @RequestMapping(value = "/current/roles", method = RequestMethod.GET)
+    public UserWithRoles getCurrentUserWithRoles(){
+        logger.info("Get current user with roles");
+       UserWithRoles userWithRoles=accountService.getUserWithRoles();
+        return userWithRoles;
+    }
+
 }
